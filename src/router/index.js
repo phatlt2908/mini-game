@@ -1,22 +1,43 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import pathConstant from '../constants/path'
+
+import MainLayout from '../components/layouts/MainLayout.vue'
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/' + pathConstant.luckyWheel
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/',
+    component: MainLayout,
+    children: [
+      {
+        path: pathConstant.luckyWheel,
+        component: () => import('@/views/Wheel'),
+        name: 'wheel',
+        meta: {
+          title: 'Vòng quay',
+          active: 'wheel'
+        }
+      },
+      {
+        path: pathConstant.randomNumber,
+        component: () => import('@/views/RanNum'),
+        name: 'ranNum',
+        meta: {
+          title: 'Số ngẫu nhiên',
+          active: 'ranNum'
+        }
+      }
+    ]
+  },
+  {
+    path: '*',
+    redirect: '/' + pathConstant.luckyWheel
   }
 ]
 
@@ -24,6 +45,11 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title + ' | Đây này'
+  next()
 })
 
 export default router
