@@ -1,8 +1,12 @@
 <template>
-  <div @mousedown="startPower" @mouseup="stopPower" @touchstart="startPower" @touchend="stopPower" class="container" id="wheel">
-    <canvas id="canvas" width="500" height="500"></canvas>
-    <div class="needle"></div>
-    <b-progress id="progress" :value="power" :max="maxPower" show-progress variant="success" animated></b-progress>
+  <div class="container" id="wheel">
+    <div @mousedown="startPower" @mouseup="stopPower">
+      <h1 style="display: none">Game mini vòng quay may mắn</h1>
+      <canvas id="canvas" width="500" height="500"></canvas>
+      <div class="needle"></div>
+    </div>
+    <b-progress @mousedown="startPower" @mouseup="stopPower" @touchstart="startPower" @touchend="stopPower"
+        id="progress" :value="power" :max="maxPower" show-progress variant="success" animated></b-progress>
     <b-tooltip :show.sync="isShowTooltip" target="progress" placement="bottom">
       <div>Nhấn và giữ<br>để quay mạnh hơn!</div>
     </b-tooltip>
@@ -181,6 +185,9 @@ export default {
   },
   created() {
     this.deg = this.rand(0, 360)
+    setTimeout(() => {
+      this.isShowTooltip = false
+    }, 10000)
   },
   watch: {
     items() {

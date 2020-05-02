@@ -1,5 +1,6 @@
 <template>
   <div class="row">
+    <h1 style="display: none">Game mini số may mắn, random number, xổ số</h1>
     <div class="col-md-3">
     </div>
     <div class="col-md-6">
