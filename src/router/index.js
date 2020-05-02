@@ -9,7 +9,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/' + pathConstant.luckyWheel
+    redirect: '/' + pathConstant.luckyWheel,
+    content: 'Các mini game nhằm mục đích chọn ra ngẫu nhiên. Miễn phí, nhanh và dễ sử dụng.',
   },
   {
     path: '/',
@@ -21,6 +22,7 @@ const routes = [
         name: 'wheel',
         meta: {
           title: 'Vòng quay',
+          content: 'Nhanh, miễn phí và dễ sử dụng. Được sử dụng để tạo không khí vui vẻ trong lớp học, nhóm bạn... nhằm mục đích chọn ra một người ngẫu nhiên.',
           active: 'wheel'
         }
       },
@@ -30,6 +32,7 @@ const routes = [
         name: 'ranNum',
         meta: {
           title: 'Số ngẫu nhiên',
+          content: 'Nhanh, miễn phí và dễ sử dụng. Sử dụng cho các sự kiện Giveaway, xổ số...',
           active: 'ranNum'
         }
       }

@@ -1,5 +1,5 @@
 <template>
-  <div @mousedown="startPower" @mouseup="stopPower" class="container" id="wheel">
+  <div @mousedown="startPower" @mouseup="stopPower" @touchstart="startPower" @touchend="stopPower" class="container" id="wheel">
     <canvas id="canvas" width="500" height="500"></canvas>
     <div class="needle"></div>
     <b-progress id="progress" :value="power" :max="maxPower" show-progress variant="success" animated></b-progress>
